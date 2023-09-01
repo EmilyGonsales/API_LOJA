@@ -18,6 +18,10 @@ public class TabelaProdutos {
         Produto lapis = new Produto(3, "Lapis Faber Castel", "Lapis Faber Castel Comum", 2.99);
         Produto apontador = new Produto(4, "Apontador", "Apontador comum com reservátorio", 7.99);
         Produto caderno = new Produto(5, "Caderno espiral", "Caderno espiral de 96 folhas", 15.99);
+        Produto lapiseria = new Produto(6, "Lapiseira Pentel", "Lapiseira Pentel 2.0", 19.08);
+        Produto marcadordetexto = new Produto(7, "Marcador de Texto Stabilo", "Marcador de Texto na cor Rosa da marca Stabilo", 10.90);
+        Produto estojo = new Produto(8, "Estojo Academie", "Estojo Academie na cor Preto", 89.90);
+        Produto lapisdecor = new Produto(9, "Lapis de Cor Faber Castel", "Lapis de Cor Faber Castel Comum 24 cores", 36.90);
 
         this.produtos.add(caneta);
         this.produtos.add(borracha);
@@ -34,7 +38,24 @@ public class TabelaProdutos {
      * método que retorna todos os produtos da Lista
      */
 
-    public List<Produto> buscarTodosOsProdutos(){
-        return this.getProdutos();
+    public List<Produto> buscarTodosOsProdutos(){return this.getProdutos(); }
+
+    /**
+     * Método que buscar um produto pelo seu ID
+     * Caso não encontre vai retornar nulo
+     * @param produtoId
+     * @return
+     */
+
+
+    public Produto buscarProdutoPeloId(int produtoId){
+        Produto produtoProcurado = null;
+        for (Produto p: this.produtos){
+            if (p.getId() == produtoId) {
+                produtoProcurado = p;
+                break;
+            }
+        }
+        return produtoProcurado;
     }
 }
