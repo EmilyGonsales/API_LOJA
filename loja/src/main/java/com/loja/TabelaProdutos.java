@@ -1,5 +1,8 @@
 package com.loja;
 
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,17 +21,12 @@ public class TabelaProdutos {
         Produto lapis = new Produto(3, "Lapis Faber Castel", "Lapis Faber Castel Comum", 2.99);
         Produto apontador = new Produto(4, "Apontador", "Apontador comum com reservátorio", 7.99);
         Produto caderno = new Produto(5, "Caderno espiral", "Caderno espiral de 96 folhas", 15.99);
-        Produto lapiseria = new Produto(6, "Lapiseira Pentel", "Lapiseira Pentel 2.0", 19.08);
-        Produto marcadordetexto = new Produto(7, "Marcador de Texto Stabilo", "Marcador de Texto na cor Rosa da marca Stabilo", 10.90);
-        Produto estojo = new Produto(8, "Estojo Academie", "Estojo Academie na cor Preto", 89.90);
-        Produto lapisdecor = new Produto(9, "Lapis de Cor Faber Castel", "Lapis de Cor Faber Castel Comum 24 cores", 36.90);
 
         this.produtos.add(caneta);
         this.produtos.add(borracha);
         this.produtos.add(lapis);
         this.produtos.add(apontador);
         this.produtos.add(caderno);
-
     }
 
     public List<Produto> getProdutos() {
@@ -58,4 +56,20 @@ public class TabelaProdutos {
         }
         return produtoProcurado;
     }
+
+    public Produto cadastrarNovoProduto(Produto novoProduto){
+        //  6 - 1 = 5
+
+        int ultimoIndex = this.produtos.size() - 1;
+        //  Produto caderno = new Produto(5, "Caderno espiral", "Caderno espiral de 96 folhas", 15.99);
+
+        Produto ultimoProduto = this.produtos.get(ultimoIndex);
+        // 6 + 1 = 7
+        int proximoId = ultimoProduto.getId() + 1;
+
+        novoProduto.setId(proximoId);
+        this.produtos.add(novoProduto);
+        return novoProduto;
+    }
+
 }
